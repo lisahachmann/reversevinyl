@@ -16,7 +16,7 @@ def mainloop():
     filename = "songdict.txt"
     infopersong = []
     songdict= {}
-    #insert your Playlist ID's here! in phlist! please replace the y's. separate with commas, have them in quotes. 
+    #insert your Playlist ID's here! in phlist! please replace the y's. separate with commas, have them in quotes.
     phlist =["yyyyyyyyyyyyyy"]
 
     try:
@@ -44,7 +44,7 @@ def mainloop():
         sp = spotipy.Spotify(auth=token)
 
         for ID in phlist:
-        #for each powerhour, grab the song name.
+        #for each playlist, grab the song name.
             results = sp.user_playlist(username, ID)
             track = results.get("tracks")
 
@@ -62,8 +62,8 @@ def mainloop():
 
         # orders dictionary with most valued keys first
         songdict=sorted(songdict.items(), key=operator.itemgetter(1), reverse=True);
-
         # print songdict
+        
         #saves results to a file
         f.write(str(songdict))
 
